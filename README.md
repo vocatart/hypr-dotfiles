@@ -1,5 +1,7 @@
 # dotfiles
 
+a collection of various things i've nabbed from other dotfiles
+
 - [alacritty](https://github.com/alacritty/alacritty)
 - [zsh](https://www.zsh.org/)
   - [ohmyzsh](https://github.com/ohmyzsh/ohmyzsh)
