@@ -1,0 +1,68 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "Ubuntu Nerd Font";
+    font-size: 13px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: transparent;
+    color: white;
+}
+
+#window {
+    font-weight: bold;
+    font-family: "Ubuntu";
+}
+
+#workspaces button {
+    padding: 0 5px;
+    background: transparent;
+    color: white;
+    border-top: 2px solid transparent;
+}
+
+#workspaces button.focused {
+    color: #c9545d;
+    border-top: 2px solid #c9545d;
+}
+
+#mode {
+    background: #64727D;
+    border-bottom: 3px solid white;
+}
+
+#clock, #battery, #cpu, #memory, #network, #pulseaudio, #custom-spotify, #tray, #mode {
+    padding: 0 3px;
+    margin: 0 5px;
+}
+
+#clock {
+    font-weight: normal;
+}
+
+#battery icon {
+    color: red;
+}
+
+#battery.charging {
+    color: lightgreen;
+}
+
+#battery.warning {
+   color: #ED7937
+}
+
+#bluetooth {
+   color: lightblue;
+}
+
+#network.disconnected {
+    background: #f53c3c;
+}
+
+#custom-spotify {
+    color: rgb(102, 220, 105);
+}
+
