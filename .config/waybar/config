@@ -1,217 +1,217 @@
-// -*- mode: jsonc -*-
-[{
-    "output": ["DP-1", "eDP-2"],
-    // "layer": "top", // Waybar at top layer
-    // "position": "bottom", // Waybar position (top|bottom|left|right)
-    "height": 24, // Waybar height (to be removed for auto height)
-    // "width": 1280, // Waybar width
-    "spacing": 4, // Gaps between modules (4px)
-    // Choose the order of the modules
-    "modules-left": [
-        "hyprland/workspaces",
-        "cava",
-        "hyprland/mode",
-        "hyprland/scratchpad"
-    ],
-    "modules-center": [
-        "sway/window"
-    ],
-    "modules-right": [
-        "mpris",
-        "idle_inhibitor",
-        "load",
-	    "wireplumber",
-        "backlight",
-        "clock",
-        "battery",
-        "tray"
-    ],
-    // Modules configuration
-    "hyprland/workspaces": {
-        "all-outputs": true,
-        "warp-on-scroll": false,
-        "enable-bar-scroll": true,
-        "disable-scroll-wraparound": true,
-        "format": "{icon}",
-        "format-icons": {
-            "1": "",
-            "2": "",
-            "3": "",
-            "4": "",
-            "5": "",
-            "9": "",
-            "10": ""
-        }
-    },
-    "hyprland/window": {
-        "format": "{title}",
-        "max-length": 40,
-        "all-outputs": true
-    },
-    "cava": {
-	//        "cava_config": "$XDG_CONFIG_HOME/cava/cava.conf",
-	"framerate": 30,
-	"autosens": 1,
-	"bars": 14,
-	"lower_cutoff_freq": 50,
-	"higher_cutoff_freq": 10000,
-	"method": "pipewire",
-	"source": "auto",
-	"stereo": true,
-	"bar_delimiter": 0,
-	"noise_reduction": 0.77,
-	"input_delay": 2,
-        "hide_on_silence": true,
-	"format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" ],
-	"actions": {
-	    "on-click-right": "mode"
-	}
-    },
-    "mpris": {
- 	"format": " {status_icon} {dynamic}",
-        "interval": 1,
-        "dynamic-len": 40,
-	"status-icons": {
-		"playing": "▶",
-		"paused": "⏸",
-		"stopped": ""
+{
+	"layer": "top",
+	"position": "top",
+
+	"modules-left": [
+		"hyprland/submap",
+		"hyprland/workspaces",
+		"custom/arrow10",
+		"hyprland/window"
+	],
+
+	"modules-right": [
+		"custom/arrow0",
+		"custom/updates",
+		"custom/arrow9",
+		"pulseaudio",
+		"custom/arrow8",
+		"network",
+		"custom/arrow7",
+		"memory",
+		"custom/arrow6",
+		"cpu",
+		"custom/arrow5",
+		"temperature",
+		"custom/arrow4",
+		"battery",
+		"custom/arrow3",
+		"hyprland/language",
+		"custom/arrow2",
+		"tray",
+		"clock#date",
+		"custom/arrow1",
+		"clock#time"
+	],
+
+	// Modules
+
+	"custom/updates": {
+		"format": "{icon}{}",
+		"return-type": "json",
+		"format-icons": {
+			"pending-updates": " 󰏖 ",
+			"updated": " 󰏗 "
+		},
+		"exec-if": "which waybar-updates",
+		"exec": "waybar-updates"
 	},
-	"dynamic-order": ["title", "artist"],
-	"ignored-players": ["firefox"]
-    },
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "",
-            "deactivated": ""
-        }
-    },
-    "sway/mode": {
-        "format": "{}"
-    },
-    "sway/scratchpad": {
-        "format": "{icon} {count}",
-        "show-empty": false,
-        "format-icons": ["", ""],
-        "tooltip": true,
-        "tooltip-format": "{app}: {title}"
-    },
-    "tray": {
-        "icon-size": 14,
-        "spacing": 10
-    },
-    "load": {
-        "format": " {}"
-    },
-    "clock": {
-        // "timezone": "America/New_York",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
-    },
-    "cpu": {
-        "format": "{usage}% ",
-        "tooltip": false
-    },
-    "memory": {
-        "format": "{}% "
-    },
-    "temperature": {
-        // "thermal-zone": 2,
-        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-        "critical-threshold": 80,
-        // "format-critical": "{temperatureC}°C {icon}",
-        "format": "{temperatureC}°C {icon}",
-        "format-icons": ["", "", ""]
-    },
-    "backlight": {
-        // "device": "acpi_video1",
-        "format": "{icon} {percent}%",
-        "format-icons": ["", "", "", "", "", "", "", "", ""]
-    },
-    "battery": {
-        "states": {
-            // "good": 95,
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "{icon} {capacity}%",
-        "format-full": "{icon} {capacity}%",
-        "format-charging": " {capacity}%",
-        "format-plugged": " {capacity}%",
-        "format-alt": "{icon} {time}",
-        // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
-        "format-icons": ["", "", "", "", ""]
-    },
-    "wireplumber": {
-        "scroll-step": 5, // %, can be a float
-        "format": "{icon} {volume}%",
-        "format-bluetooth": "{icon} {volume}% ",
-        "format-bluetooth-muted": " {icon}",
-        "format-muted": "",
-        "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
-        },
-        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-    }
-},{
-    "output": ["HDMI-A-1"],
-    // "layer": "top", // Waybar at top layer
-    // "position": "bottom", // Waybar position (top|bottom|left|right)
-    "height": 24, // Waybar height (to be removed for auto height)
-    // "width": 1280, // Waybar width
-    "spacing": 4, // Gaps between modules (4px)
-    // Choose the order of the modules
-    "modules-left": [
-        "hyprland/workspaces",
-        "hyprland/mode",
-        "hyprland/scratchpad"
-    ],
-    "modules-center": [
-        "clock"
-    ],
-    "modules-right": [
-        "hyprland/window"
-    ],
-    "sway/workspaces": {
-        "all-outputs": true,
-        "warp-on-scroll": true,
-        "enable-bar-scroll": true,
-        "format": "{icon}",
-        "format-icons": {
-            "1": "",
-            "2": "",
-            "3": "",
-            "4": "",
-            "5": "",
-            "9": "",
-            "10": ""
-        }
-    },
-    "sway/window": {
-        "format": "{title}",
-        "max-length": 40,
-        "all-outputs": true
-    },
-    "sway/mode": {
-        "format": "{}"
-    },
-    "sway/scratchpad": {
-        "format": "{icon} {count}",
-        "show-empty": false,
-        "format-icons": ["", ""],
-        "tooltip": true,
-        "tooltip-format": "{app}: {title}"
-    },
-    "clock": {
-        // "timezone": "America/New_York",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
-    }
-}]
+
+	"battery": {
+		"interval": 10,
+		"states": {
+			"warning": 30,
+			"critical": 15
+		},
+		"format-time": "{H}:{M:02}",
+		"format": "{icon} {capacity}% ({time})",
+		"format-charging": "󰂐 {capacity}% ({time})",
+		"format-charging-full": "󱟦 {capacity}%",
+		"format-full": "{icon} {capacity}%",
+		"format-alt": "{icon} {power}",
+        "format-icons": [ "󱊡", "󱊡", "󱊢", "󱊢", "󱊣" ],
+		"tooltip": false
+	},
+
+	"clock#time": {
+		"interval": 1,
+		"format": " {:%r} ",
+		"tooltip": false
+	},
+
+	"clock#date": {
+		"interval": 20,
+		"format": "{:%e %b %Y}",
+		"tooltip": false
+		//"tooltip-format": "{:%e %B %Y}"
+	},
+
+	"cpu": {
+		"interval": 5,
+		"tooltip": false,
+		"format": " {usage}%",
+		"format-alt": " {load}",
+		"states": {
+			"warning": 70,
+			"critical": 90
+		}
+	},
+
+	"hyprland/language": {
+		"format": " {}"
+	},
+
+	"memory": {
+		"interval": 5,
+		"format": " {used:0.1f}G/{total:0.1f}G",
+		"states": {
+			"critical": 90
+		},
+		"tooltip": false
+	},
+
+	"network": {
+		"interval": 5,
+		"format-wifi": "  {essid} ({signalStrength}%)",
+		"format-ethernet": " {ifname}",
+		"format-disconnected": "No connection",
+		"format-alt": " {ipaddr}/{cidr}",
+		"tooltip": false
+	},
+
+	"hyprland/submap": {
+		"format": "{}",
+		"tooltip": false
+	},
+
+	"hyprland/window": {
+		"format": "{}",
+		"max-length": 30,
+		"tooltip": false
+	},
+
+	"hyprland/workspaces": {
+		"smooth-scrolling-threshold": 4,
+		"format": "{name}"
+	},
+
+	"pulseaudio": {
+		"format": "{icon}  {volume}%",
+		"format-bluetooth": "{icon}  {volume}%",
+		"format-muted": "",
+		"format-icons": {
+			"headphone": "",
+			"hands-free": "",
+			"headset": "",
+			"phone": "",
+			"portable": "",
+			"car": "",
+			"default": ["", ""]
+		},
+		"scroll-step": 1,
+		"on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+		"tooltip": false
+	},
+
+	"temperature": {
+		"critical-threshold": 90,
+		"interval": 5,
+		"format": "{icon} {temperatureF}°",
+		"format-icons": [
+			"",
+			"",
+			"",
+			"",
+			""
+		],
+		"tooltip": false
+	},
+
+	"tray": {
+		"icon-size": 18,
+	},
+
+	"custom/arrow1": {
+		"format": "",
+		"tooltip": false
+	},
+
+	"custom/arrow2": {
+		"format": "",
+		"tooltip": false
+	},
+
+	"custom/arrow3": {
+		"format": "",
+		"tooltip": false
+	},
+
+	"custom/arrow4": {
+		"format": "",
+		"tooltip": false
+	},
+
+	"custom/arrow5": {
+		"format": "",
+		"tooltip": false
+	},
+
+	"custom/arrow6": {
+		"format": "",
+		"tooltip": false
+	},
+
+	"custom/arrow7": {
+		"format": "",
+		"tooltip": false
+	},
+
+	"custom/arrow8": {
+		"format": "",
+		"tooltip": false
+	},
+
+	"custom/arrow9": {
+		"format": "",
+		"tooltip": false
+	},
+
+	"custom/arrow10": {
+		"format": "",
+		"tooltip": false
+	},
+
+	"custom/arrow0": {
+		"format": "",
+		"tooltip": false
+	}
+}
