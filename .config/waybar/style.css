@@ -9,7 +9,7 @@
 
 @keyframes blink-update {
 	to {
-		background-color: white;
+		color: @purple;
 	}
 }
 
