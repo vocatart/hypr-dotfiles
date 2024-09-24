@@ -15,3 +15,8 @@ SAVEHIST=1000
 # End of lines configured by zsh-newuser-install
 
 eval "$(starship init zsh)"
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+alias update='sudo pacman -Syu'
+
