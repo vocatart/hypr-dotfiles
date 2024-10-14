@@ -1,5 +1,8 @@
 # dotfiles
 
+> [!NOTE]  
+> i dzont use hyprland anymore womp womp
+
 a collection of various things i've nabbed from other dotfiles
 
 - [alacritty](https://github.com/alacritty/alacritty)
